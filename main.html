@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,Access-Control-Allow-Headers: Content-Type">
+    <title>Document</title>
+</head>
+<body>
+<script>
+const apiEndpoint =  'https://jsonplaceholder.typicode.com/photos/1';
+// async function apiCall() {
+// try {
+//   // Make a GET request to the API
+//   const response = await fetch(apiEndpoint);
+
+//   // Check if the request was successful (status code 200)
+//   if (!response.ok) {
+//     throw new Error(`HTTP error! Status: ${response.status}`);
+//   }
+
+//   // Assume the response is in JSON format
+//   const data = await response.json();
+
+//   // Extract the URL of the photo from the response
+//   const photoUrl = data.url;
+
+//   // Make a second GET request to fetch the Blob data
+//   const photoResponse = await fetch(photoUrl);
+
+//   // Check if the second request was successful (status code 200)
+//   if (!photoResponse.ok) {
+//     throw new Error(`HTTP error! Status: ${photoResponse.status}`);
+//   }
+
+//   // Convert the response to a Blob
+//   const photoBlob = await photoResponse.blob();
+
+//   // Create a URL for the Blob
+//   const blobUrl = URL.createObjectURL(photoBlob);
+
+//   // Create a link with the download attribute
+//   const link = document.createElement('a');
+//   link.href = blobUrl;
+//   link.download = 'downloaded-file.jpg';
+
+//   // Append the link to the document
+//   document.body.appendChild(link);
+
+//   // Programmatically click the link
+//   link.click();
+
+//   // Remove the link from the document
+//   document.body.removeChild(link);
+
+//   // Revoke the Blob URL to free up resources
+//   URL.revokeObjectURL(blobUrl);
+
+// } catch (error) {
+//   console.error('Error downloading file:', error); }
+// }
+class AdminRole {
+  accessContent(){
+    return "admin role privileges"
+  }
+}
+class GuestRole{
+  acessContent(){
+    return "guest role privileges"
+  }
+}
+class SURole{
+  accessContent(){
+    return "super user privileges"
+  }
+}
+class User {
+  constructor(role){
+    this.role = role;
+  }
+  checkAccess(){
+    return this.role.accessContent();
+  }
+}
+const guest = new User(new AdminRole());
+console.log(guest.checkAccess())
+// (function (){
+//     apiCall();
+// })();
+
+// (()=>{
+//     console.log('hello')
+// })
+    </script>
+</body>
+</html>
